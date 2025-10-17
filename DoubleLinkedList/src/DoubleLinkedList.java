@@ -1,6 +1,7 @@
 public class DoubleLinkedList {
 
 Node head;
+Node cola;
 
 public void add(int data){
     
@@ -72,6 +73,51 @@ public void PrintBackWard(){
       
     System.out.println("null");
 }
+
+
+    public void remove(int value) {
+        // Verificar si la lista está vacía
+        if (head == null) {
+            System.out.println("La lista está vacía, no se puede eliminar " + value);
+            return;
+        }
+
+        Node current = head;
+
+        // Buscamos el nodo que contiene el valor a eliminar
+        while (current != null && current.data != value) {
+            current = current.next;
+        }
+
+        // Si no se encontró el valor, salir
+        if (current == null) {
+            System.out.println("El valor " + value + " no se encontró en la lista.");
+            return;
+        }
+
+        //  Si el nodo a eliminar es el head
+        if (current == head) {
+            head = head.next;
+            if (head != null) {
+                head.prev = null;
+            } else {
+                // Si se eliminó el único elemento
+                cola = null;
+            }
+        } 
+        //  Si el nodo a eliminar no es el primero
+        else {
+            current.prev.next = current.next;
+            if (current.next != null) {
+                current.next.prev = current.prev;
+            } else {
+                // Si se eliminó el último nodo, actualizar la cola 
+                cola = current.prev;
+            }
+        }
+
+        System.out.println("Se eliminó el valor: " + value);
+    }
 
 
 }

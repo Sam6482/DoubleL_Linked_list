@@ -15,5 +15,14 @@ public class App {
         System.out.println("---------------------------");
 
         List.PrintBackWard();
+
+        System.err.println("---------------------------");
+        System.out.println("Eliminando el 3");
+
+        List.remove(3);
+        List.printForWard();
+
+        System.out.println("---------------------------");
+        List.remove(39);
     }
 }
